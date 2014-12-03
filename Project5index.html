@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <!-- Allison Moshier
+       Introduction to Programming
+       November 28th, 2014
+       Project 5- Beyoncé Game, Part 1-->
+
+  <head>
+     <title>
+            Beyoncé 4.0
+     </title>
+     <style>
+        .beyonce{font-family:georgia;}
+        .fancy{font-style:italic;}
+     </style>
+     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+     <meta name="author"             content="Allison Moshier" />
+     <script type="text/javascript" src="locations.js"></script>
+     <script>
+       //Location Arrays
+       var stageLoc = new Array()
+                     stageLoc[0]= stage,
+                     stageLoc[1]= screaming,
+                     stageLoc[2]= firstSong,
+                     stageLoc[3]= secondSong,
+                     stageLoc[4]= crying,
+                     stageLoc[5]= costume,
+                     stageLoc[6]= bracelet,
+                     stageLoc[7]= loveXO,
+                     stageLoc[8]= autographs,
+                     stageLoc[9]= flowers
+                     stageLoc[10]= error;
+        // Item Array
+        var items = new Array () 
+        		    items[6] = itembracelet, 
+        		    items[7] = itemlove,
+        		    items[8] = itemautographs,
+        		    items[9] = itemflowers;
+        		 
+        //Inventory Array 
+        var inventory = new Array ();
+                   
+       //Score and Location
+        var score = 0;
+        var currentLoc = 0;
+        
+        // Visited for Score Count  
+        var visited0 = false;
+        var visited1 = false;
+        var visited2 = false;
+        var visited3 = false;
+        var visited4 = false;
+        var visited5 = false;
+        var visited6 = false;
+        var visited7 = false;
+        var visited8 = false;
+        var visited9 = false;
+        
+        // Item Variables
+        var taken_bracelet = false;
+        var taken_love = false;
+        var taken_flowers = false;
+        function init() {
+           displayMessage(stage.description);
+           countScore();
+        }
+        
+        //Show Score
+        function showScore() {
+           var targetScoreBox = document.getElementById("taScore");
+           targetScoreBox.value = score;
+        }
+        //Score Counter
+        function countScore() {
+               if(visited0=== false && currentLoc === 0) {
+                 visited0 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited1=== false && currentLoc === 1) {
+                 visited1 = true;
+                 score += 5;
+                 showScore();
+               } 
+               if(visited2=== false && currentLoc === 2) {
+                 visited2 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited3=== false && currentLoc === 3) {
+                 visited3 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited4=== false && currentLoc === 4) {
+                 visited4 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited5=== false && currentLoc === 5) {
+                 visited5 = true;
+                 score += 5;
+                 showScore();
+               } 
+               if(visited6=== false && currentLoc === 6) {
+                 visited6 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited7=== false && currentLoc === 7) {
+                 visited7 = true;
+                 score += 5;
+                 showScore();
+               } 
+               if(visited8=== false && currentLoc === 8) {
+                 visited8 = true;
+                 score += 5;
+                 showScore();
+               }
+               if(visited9=== false && currentLoc === 9) {
+                 visited9 = true;
+                 score += 5;
+                 showScore();
+               }
+    	}
+    	
+        //Commands for the Go Button 
+        function btnGo_click() {
+           var userQuestion = document.getElementById("txtCommand").value;
+           userQuestion = userQuestion.toUpperCase();
+           switch(userQuestion){
+             case 'UP':
+               goUp();
+               break;
+             case 'DOWN':
+               goDown();
+               break;
+             case 'UNDER':
+               goUnder();
+               break;
+             case 'TO THE LEFT, TO THE LEFT':
+               goLeft();
+               break;
+             case 'RIGHT':
+               goRight();
+               break;
+             case 'HELP':
+               displayMessage("Valid commands:\nUp\nDown\nUnder\nTo the left, to the left\nRight\nHelp");
+               break;
+	         case 'TAKE':
+	           itemTake();
+	           break;
+	         case 'INVENTORY':
+	           displayInventory();
+	           break;
+             default:
+               displayMessage("That is not a valid command. Type help for a list of commands!");
+          }
+       }
+       function itemTake(){ 
+       		if (stageLoc[currentLoc].hasItem === true && items[currentLoc].itemTake === false){
+       		   inventory.push(items[currentLoc].name);
+       		   displayMessage("You took the " + items[currentLoc].name);
+       		   items[currentLoc].takeItem = true;
+       		}else{
+       		   displayMessage("There are no items to take in this area.");
+       		}
+       	}	
+       function displayInventory(){
+       			var inventoryMessage = "Inventory: " + inventory;
+       			displayMessage(inventoryMessage);
+       	}		
+       			
+      // Disabling buttons		
+      function buttonDisable(){
+        switch(currentLoc){
+          case 0:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=false;
+            document.getElementById("btn_Right").disabled=false;
+            document.getElementById("btn_Under").disabled=false;
+            break;
+          case 1:
+            document.getElementById("btn_Up").disabled=true;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 2:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=false;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 3:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=false;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 4:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=true;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 5:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=true;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 6:
+            document.getElementById("btn_Up").disabled=true;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 7:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=true;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 8:
+            document.getElementById("btn_Up").disabled=true;
+            document.getElementById("btn_Down").disabled=false;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+          case 9:
+            document.getElementById("btn_Up").disabled=false;
+            document.getElementById("btn_Down").disabled=true;
+            document.getElementById("btn_Left").disabled=true;
+            document.getElementById("btn_Right").disabled=true;
+            document.getElementById("btn_Under").disabled=true;
+            break;
+        }
+      }
+      
+      //Directional buttons
+      function goUp() {
+        switch(currentLoc) {
+           case 0:
+             currentLoc = 1;
+             buttonDisable(); 
+             countScore();
+             break;
+           case 4:
+             currentLoc = 0;
+             buttonDisable();
+             break;
+           case 5:
+             currentLoc = 0;
+             buttonDisable();
+             break;
+          case 2:
+            currentLoc = 6;
+            buttonDisable(); 
+            countScore();
+            break;
+          case 7:
+            currentLoc = 2;
+            buttonDisable();
+            break;
+          case 3:
+            currentLoc = 8;
+            buttonDisable(); 
+            countScore();
+            break;
+          case 9:
+            currentLoc = 3;
+            buttonDisable();
+            break;
+          default:
+            displayMessage(error.description);
+        }
+       displayMessage(stageLoc[currentLoc].description);
+      }
+      
+      function goDown() {
+        switch(currentLoc) {
+          case 1:
+            currentLoc = 0;
+            buttonDisable();
+            break;
+          case 0:
+            currentLoc = 4;
+            buttonDisable();
+            countScore();
+            break;
+          case 2:
+            currentLoc = 7;
+            buttonDisable(); 
+            countScore();
+            break;
+          case 6:
+            currentLoc = 2;
+            buttonDisable();
+            break;
+          case 3:
+            currentLoc = 9;
+            buttonDisable(); 
+            countScore();
+            break;
+          case 8:
+            currentLoc = 3;
+            buttonDisable();
+            break;
+          default:
+            displayMessage(error.description)
+        }
+       displayMessage(stageLoc[currentLoc].description);
+     }
+     
+     function goUnder() {
+       switch(currentLoc) {
+         case 0:
+           currentLoc = 5;
+           buttonDisable();
+           countScore();
+           break;
+         default:
+            displayMessage(error.description)
+        }
+       displayMessage(stageLoc[currentLoc].description);
+     }
+     
+     function goLeft() {
+       switch(currentLoc) {
+         case 3:
+           currentLoc = 0;
+           buttonDisable();
+           break;
+         case 0:
+           currentLoc = 2;
+           buttonDisable();
+           countScore();
+           break;
+         default:
+            displayMessage(error.description)
+        }
+       displayMessage(stageLoc[currentLoc].description);
+     }
+     
+     function goRight() {
+       switch(currentLoc) {
+         case 2:
+           currentLoc = 0;
+           buttonDisable();
+           break;
+         case 0:
+           currentLoc = 3;
+           buttonDisable(); 
+           countScore();
+           break;
+         default:
+            displayMessage(error.description)
+        }
+       displayMessage(stageLoc[currentLoc].description);
+      }
+      
+      // Show Message/Description 
+      function displayMessage(msg) {
+        var target = document.getElementById("taAnswer");
+        target.value = msg + "\n\n" + target.value;
+      }
+      
+    </script>
+  </head>
+
+  <body onload="init();">
+       <h1 class="beyonce">Beyoncé 4.0</h1>
+       <p class="fancy">If you liked it, you should of put a ring on it. Now find the ring, go!</p>
+       <br>
+       Score:
+       <textarea rows="2" cols="5" id="taScore">5</textarea>
+       <br>
+       <br>
+       <textarea rows="10" cols="40" id="taAnswer"></textarea>
+       <br>
+       Command:
+       <input type="text"
+              id="txtCommand"
+              name="txtCommand">
+       <input type="button"
+              value="Go"
+              onclick="btnGo_click();"/>
+       <br>
+       <input type="button"
+              value="Up"
+              id="btn_Up"
+              onclick="goUp();"/>
+       <input type="button"
+              value="Down"
+              id="btn_Down"
+              onclick="goDown();"/>
+       <input type="button"
+              value="Under"
+              id="btn_Under"
+              onclick="goUnder();"/>
+       <input type="button"
+              value="To the Left, to the Left"
+              id="btn_Left"
+              onclick="goLeft();"/>
+       <input type="button"
+              value="Right"
+              id="btn_Right"
+              onclick="goRight();"/>
+       <br>
+       <br>
+       <img src="gamemap.jpg" alt="Map" height="500" width="700">
+       <p>
+          <!-- http://www.w3schools.com/html/tryit.asp?filename=tryhtml_mailto -->
+          If Problems Occur on Stage:
+          <a href="mailto:Allison.Moshier1@marist.edu?Subject=Hello%20again" target="_top">
+            Send An Email Here.
+          </a>
+          <!-- http://validator.w3.org/check -->
+          <!-- http://jigsaw.w3.org/css-validator/validator -->
+      </p>
+   </body>
+
+</html>
