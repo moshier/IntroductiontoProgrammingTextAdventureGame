@@ -130,7 +130,7 @@ function itemInit(){
    var itemautographs = new item(); 
        itemautographs.id = 8;
        itemautographs.name = "autographs";
-       itemautographs.description = "You sign autographs for your fans and thanked.";
+       itemautographs.description = "You sign autographs for your fans and you are thanked.";
        itemautographs.itemTake = false; 
    
    var itemflowers = new item(); 
