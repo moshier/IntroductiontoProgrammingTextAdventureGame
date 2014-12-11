@@ -22,35 +22,18 @@
      <script>
         
         //Inventory Array 
-        var inventory = new Array ();
+        var inventory = new Array();
         
         //Location Arrays
-        var stageLoc = new Array()
+        var stageLoc = new Array();
                       
         //Item Array
-        var items = new Array () 
+        var items = new Array(); 
         		    
        
         //Score and Location
         var score      = 0;
         var currentLoc = 0;
-        
-        //Visited for Score Count  
-        var visited0 = false;
-        var visited1 = false;
-        var visited2 = false;
-        var visited3 = false;
-        var visited4 = false;
-        var visited5 = false;
-        var visited6 = false;
-        var visited7 = false;
-        var visited8 = false;
-        var visited9 = false;
-        
-        //Item Variables
-        var taken_bracelet = false;
-        var taken_love     = false;
-        var taken_flowers  = false;
         
         //Show Message/Description 
         function displayMessage(msg) {
@@ -87,7 +70,7 @@
         function countScore() {
            if (stageLoc[currentLoc].hasVisited === false) {
               stageLoc[currentLoc].hasVisited = true; 
-              score += 5
+              score += 5;
               showScore(); 
            }
         }
@@ -96,11 +79,11 @@
         function itemTake(){ 
        		if (stageLoc[currentLoc].hasItem === true && items[currentLoc].itemTake === false){
        		   inventory.push(items[currentLoc].name);
-       		   items[currentLoc].takeItem = true;
-       		   stageLoc[currentLoc].hasItem === false;
+       		   items[currentLoc].itemTake = true;
+       		   stageLoc[currentLoc].hasItem = false;
        		   displayMessage("You took the " + items[currentLoc].name);
        		   displayMessage(stageLoc[currentLoc].description);
-       		}else{
+       		} else {
        		   displayMessage("There are no items to take in this area.");
        		}
        	}
@@ -114,12 +97,12 @@
         function puzzlePiece(special){ 
           switch(special){
            case 9:
-           if (items[6].itemTake === false && items[7].itemTake === false && items[8].itemTake === false){ 
+           if (items[6].itemTake === true && items[7].itemTake === true && items[8].itemTake === true){ 
               //items[9].itemTake === false; 
               currentLoc = 3;
-              displayMessage("Still missing items.");
+              displayMessage(stageLoc[currentLoc].description)
            } else {
-              currentLoc = 9;
+                         displayMessage("Still missing items.");
               }
            break; 
           }
@@ -243,7 +226,7 @@
        <p class="fancy">If you liked it, you should of put a ring on it. Now find the ring, go!</p>
        <br>
        Score:
-       <textarea rows="2" cols="5" id="taScore">5</textarea>
+       <textarea rows="2" cols="5" id="taScore"></textarea>
        <br>
        <br>
        <textarea rows="10" cols="40" id="taAnswer"></textarea>

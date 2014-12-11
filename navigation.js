@@ -23,8 +23,8 @@ function newLocation(dir){
    if (nextLocation >= 0){
       currentLoc = nextLocation;
       puzzlePiece(currentLoc);
-      countScore();
       displayMessage(stageLoc[currentLoc].description);
+      countScore();
       buttonDisable();
       } else {
     displayMessage("You can't go this way.")
@@ -33,10 +33,10 @@ function newLocation(dir){
 
 //Directional buttons
 function goUp() {
-    newLocation(UP);     
+    newLocation(UP);  
 }    
 function goDown() {
-    newLocation(DOWN);    
+    newLocation(DOWN);
 }
 function goUnder() {
     newLocation(UNDER);
