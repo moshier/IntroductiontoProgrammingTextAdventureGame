@@ -97,14 +97,12 @@
         function puzzlePiece(special){ 
           switch(special){
            case 9:
-           if (items[6].itemTake === true && items[7].itemTake === true && items[8].itemTake === true){ 
-              //items[9].itemTake === false; 
+           if (items[6].itemTake === false && items[7].itemTake === false && items[8].itemTake === false){ 
               currentLoc = 3;
-              displayMessage(stageLoc[currentLoc].description)
-           } else {
-                         displayMessage("Still missing items.");
-              }
-           break; 
+            	displayMessage("Still missing items.");
+            	//displayMessage(stageLoc[currentLoc].description);
+            }	
+        	break; 
           }
         }
         

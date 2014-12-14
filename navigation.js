@@ -23,8 +23,8 @@ function newLocation(dir){
    if (nextLocation >= 0){
       currentLoc = nextLocation;
       puzzlePiece(currentLoc);
-      displayMessage(stageLoc[currentLoc].description);
       countScore();
+      displayMessage(stageLoc[currentLoc].description);
       buttonDisable();
       } else {
     displayMessage("You can't go this way.")

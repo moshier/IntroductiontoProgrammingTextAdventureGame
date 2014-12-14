@@ -50,7 +50,7 @@ function stageInit(){
        costume.name = "costume";
        costume.description = "5. Costume change!";
        costume.hasItem = false; 
-              costume.hasVisited = false;
+       costume.hasVisited = false;
 
    
    var bracelet = new Location();
@@ -58,7 +58,7 @@ function stageInit(){
        bracelet.name = "bracelet";
        bracelet.description = "6. You contribute to Make a Wish by singing to a fan in the audience.";
        bracelet.hasItem = true; 
-              bracelet.hasVisited = false;
+       bracelet.hasVisited = false;
 
    
    var loveXO = new Location();
@@ -66,7 +66,7 @@ function stageInit(){
        loveXO.name = "loveXO";
        loveXO.description =  "7. Your love is like XO, you perform the XO song and feel overwhelmed with love from your fans.";
        loveXO.hasItem = true; 
-              loveXO.hasVisited = false;
+       loveXO.hasVisited = false;
 
    
    var autographs = new Location();
@@ -74,7 +74,7 @@ function stageInit(){
        autographs.name = "autographs";
        autographs.description =  "8. You sign autographs for fans in between songs.";
        autographs.hasItem = true; 
-              autographs.hasVisited = false;
+       autographs.hasVisited = false;
 
    
    var flowers = new Location();
@@ -82,7 +82,7 @@ function stageInit(){
        flowers.name = "flowers";
        flowers.description =  "9. You receive flowers from a generous fan and notice something that shines in the bouquet...it's the ring! Game Over! Refresh to play again.";
        flowers.hasItem = true; 
-              flowers.hasVisited = false;
+       flowers.hasVisited = false;
 
    
    var error = new Location(); 
